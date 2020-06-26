@@ -1,0 +1,89 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Spartan", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+
+/*==========================
+          Job Card
+==========================*/
+.col {
+
+}
+
+.row {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 1rem;
+    /* white-space: pre; */
+}
+.company-name {
+    padding-top: .7rem;
+    padding-bottom: .7rem;
+    margin-right: 1rem;
+}
+
+.tag-round p {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 6px 6px 2.25px;
+    margin: 0 1rem 0 0;
+    border-radius: 2rem;
+    border: 1px solid #aaa;
+}
+
+.tag-description {
+    font-size: 14px;
+    padding: 6px 6px 2.25px;
+    margin-left: -16px;
+    /* border: 1px solid #aaa; */
+}
+
+.tag-description::after {
+    content: " ";
+    letter-spacing: 1rem;
+    background: center center no-repeat url('./assets/images/dark-gray-dot.png');
+    width: 4px;
+    height: 4px;
+}
+
+.tag-description:last-child::after {
+    content: "";
+}
+.row:nth-child(3) {
+    justify-content: space-around;
+}
+.tag-skill {
+    padding: 6px 8px 4px;
+    margin-right: .5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+}
+@media(min-width: 320px) {
+    body {
+        font-size: 14px;
+    }
+    .inner-wrap {
+        padding: 1.5rem;
+    }
+    .job-listing {
+        width: 100%;
+        margin: 2rem 0;
+        padding: 2rem 1rem;
+        border: 1px solid rgba(25, 25, 240, .5);
+        border-radius: 5px;
+        box-shadow: 1px 3px 10px rgba(0,0,0,0.2);
+    }
+}
