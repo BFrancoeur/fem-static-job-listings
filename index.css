@@ -43,16 +43,25 @@ body {
     border: 1px solid #aaa;
 }
 
+#job-description-list {
+    list-style-type: disc;
+}
+
 .tag-description {
+    display: inline-block;
     font-size: 14px;
     padding: 6px 6px 2.25px;
-    margin-left: -16px;
-    /* border: 1px solid #aaa; */
+    margin-left: 0;
+    margin-right: -6px;
+}
+
+.tag-description:first-child {
+    padding-left: 0;
 }
 
 .tag-description::after {
-    content: " ";
-    letter-spacing: 1rem;
+    content: "\2022";
+    padding-left: 6px;
     background: center center no-repeat url('./assets/images/dark-gray-dot.png');
     width: 4px;
     height: 4px;
@@ -60,10 +69,10 @@ body {
 
 .tag-description:last-child::after {
     content: "";
-}
-.row:nth-child(3) {
+} */
+/* .row:nth-child(3) {
     justify-content: space-around;
-}
+} */
 .tag-skill {
     padding: 6px 8px 4px;
     margin-right: .5rem;
