@@ -62,17 +62,16 @@ body {
 .tag-description::after {
     content: "\2022";
     padding-left: 6px;
-    background: center center no-repeat url('./assets/images/dark-gray-dot.png');
+    /* background: center center no-repeat url('./images/dark-gray-dot.png'); */
     width: 4px;
     height: 4px;
 }
 
 .tag-description:last-child::after {
     content: "";
-} */
-/* .row:nth-child(3) {
-    justify-content: space-around;
-} */
+}
+
+
 .tag-skill {
     padding: 6px 8px 4px;
     margin-right: .5rem;
