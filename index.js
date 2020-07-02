@@ -5,7 +5,7 @@ getJobsList();
 console.log(typeof jobsList);
 
 function getJobsList() {
-    fetch('http://localhost:3000/data.json')
+    fetch('https://fem-static-job-listings-six.vercel.app/data.json')
     .then(response => response.json())
     .then(data => {
         showJobsList(data);
