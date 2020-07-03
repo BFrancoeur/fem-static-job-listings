@@ -8,18 +8,10 @@ function getJobsList() {
     fetch('https://fem-static-job-listings-six.vercel.app/data.json')
     .then(response => response.json())
     .then(data => {
+        console.table(data);
         showJobsList(data);
     });
 
-}
-
-function hidePNew(pNew) {
-    pNew.style.display = 'none';
-}
-
-function isNew(job, pNew) {
-    pNew = document.querySelector('.p-new');
-    return (job.new ? "New!" : hidePNew(pNew));
 }
 
 function isFeatured(job) {
@@ -37,7 +29,7 @@ function showJobsList(jobs) {
         const jobListing = document.createElement('article');
         jobListing.classList.add('job-listing');
         jobListing.classList.add('card-bg-transparent');
-        let pNew = document.querySelector('.new');
+        let pNew = document.querySelector('.p-new');
         let pFeatured = document.querySelector('.featured');
 
             jobListing.innerHTML = `
@@ -49,10 +41,10 @@ function showJobsList(jobs) {
         <div class="col">
             <div class="row">
                 <div class="company-name"><p>${job.company}</p></div>
-                <div class="tag-round new"><p class="p-new">${isNew(job)}
+                <div class="tag-round new"><p class="p-new">${togglePNew(job)}
             </p>
             </div>
-                <div class="tag-round featured"><p class="p-featured">${job.featured ? "Featured" : ""}</p></div>
+                <div class="tag-round featured"><p class="p-featured">New!${job.featured ? "Featured" : ""}</p></div>
             </div>
             <div class="row">
                 <h3 class="job-title">Senior Frontend Developer</h3>
@@ -94,5 +86,14 @@ function showJobsList(jobs) {
         
         jobsList.appendChild(jobListing);
     });
+
+
+    function togglePNew(job, pNew) {
+        console.log('job.new: ', job.new);
+        console.log('pNew', pNew);
+        job.new === true ? pNew.style.display = "block" : pNew.style.display = "none"; 
+    
+        console.log('job.new.value: ', job.new.value);
+    }
 
 }
