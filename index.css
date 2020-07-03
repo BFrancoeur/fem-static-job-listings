@@ -58,7 +58,7 @@ body {
     margin-right: 1rem;
 }
 
-.tag-round p {
+.tag-round {
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;

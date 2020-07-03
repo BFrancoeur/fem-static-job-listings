@@ -29,8 +29,8 @@ function showJobsList(jobs) {
         const jobListing = document.createElement('article');
         jobListing.classList.add('job-listing');
         jobListing.classList.add('card-bg-transparent');
-        let pNew = document.querySelector('.p-new');
-        let pFeatured = document.querySelector('.featured');
+        const newBadge = '<p class="tag-round p-new">New!</p>';
+        const featuredBadge = '<p class="tag-round p-featured">Featured</p>';
 
         isPropertyValueTrue(job);
 
@@ -43,10 +43,9 @@ function showJobsList(jobs) {
         <div class="col">
             <div class="row">
                 <div class="company-name"><p>${job.company}</p></div>
-                <div class="tag-round new"><p class="p-new">New!
-            </p>
+                <div class="job-new">${job.new ? newBadge : ''}</div>
             </div>
-                <div class="tag-round featured"><p class="p-featured">New!${job.featured ? "Featured" : ""}</p></div>
+                <div class="job-new">${job.featured ? featuredBadge : ''}</div>
             </div>
             <div class="row">
                 <h3 class="job-title">Senior Frontend Developer</h3>
@@ -85,7 +84,6 @@ function showJobsList(jobs) {
             </div>
         </div>
         `;
-        console.log('after innerHTML pNew: ', pNew);
         jobsList.appendChild(jobListing);
     });
 
@@ -112,8 +110,23 @@ function showJobsList(jobs) {
 
         let jobNew = job.new.value;
         let jobFeatured = job.featured.value;
-        console.log('jobNew: ', jobNew);
+       
         console.log('jobFeatured: ', jobFeatured);
+
+        // check if the value of job.new is true
+        console.log('job.new: ', job.new);
+
+        // if it is true, then showNew();
+        function showNew() {
+            if (job.new === true) {
+                pNew.style.display= 'block';
+            } else {
+                pNew.style.display = 'none';
+            }
+        }
+        // else hideNew();
+
+    
 
 
     }
