@@ -41,14 +41,17 @@ function showJobsList(jobs) {
         let pFeatured = document.querySelector('.featured');
 
             jobListing.innerHTML = `
-        <div class="row">
-            <img src="${job.logo}" alt="${job.company} logo" class="logo">
+        <div class="col">
+            <div class="row">
+                <img src="${job.logo}" alt="${job.company} logo" class="logo">
+            </div>
         </div>
         <div class="col">
             <div class="row">
                 <div class="company-name"><p>${job.company}</p></div>
                 <div class="tag-round new"><p class="p-new">${isNew(job)}
-            </p></div>
+            </p>
+            </div>
                 <div class="tag-round featured"><p class="p-featured">${job.featured ? "Featured" : ""}</p></div>
             </div>
             <div class="row">

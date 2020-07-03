@@ -1,3 +1,21 @@
+:root {
+    /* Typography */
+    --font-family: "Spartan", sans-serif;
+    --h2-heading-font-size: 21px;
+    --h3-heading-font-size: 18px;
+    --body-font-size: 15px;
+    --default-line-height: 1.4;
+    --default-font-weight: 500;
+    --bold-font-weight: 700;
+    
+    /* Colors */
+    --color-bright-white: hsl(255, 100%, 100%);
+    --color-primary: hsl(180, 29%, 50%);
+    --color-neutral: hsl(180, 52%, 96%);
+    --color-neutral-dark: hsl(180, 8%, 52%);
+    --color-neutral-extra-dark: hsl(180, 14%, 20%);
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -5,16 +23,23 @@
 }
 
 body {
-    font-family: "Spartan", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
+    font-family: var(--font-family);
+    font-size: var(--body-font-size);
+    font-weight: var(--default-font-weight);
+    background-color: var(--color-neutral);
 }
-
-
 
 /*==========================
           Job Card
 ==========================*/
+.job-listing {
+    display: flex;
+    justify-content: space-around;
+    padding: .5rem;
+    align-items: center;
+    background-color: var(--color-bright-white);
+}
+
 .col {
 
 }
@@ -24,7 +49,7 @@ body {
     justify-content: flex-start;
     flex-wrap: wrap;
     align-items: center;
-    margin-bottom: 1rem;
+    /* margin-bottom: .2rem; */
     /* white-space: pre; */
 }
 .company-name {
@@ -75,8 +100,8 @@ body {
 .tag-skill {
     padding: 6px 8px 4px;
     margin-right: .5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #aaa;
+    color: var(--color-primary);
+    background-color: var(--color-neutral);
     border-radius: 5px;
 }
 @media(min-width: 320px) {
@@ -90,8 +115,21 @@ body {
         width: 100%;
         margin: 2rem 0;
         padding: 2rem 1rem;
-        border: 1px solid rgba(25, 25, 240, .5);
         border-radius: 5px;
-        box-shadow: 1px 3px 10px rgba(0,0,0,0.2);
+        box-shadow: 1px 3px 10px hsl(180, 29%, 70%);
+    }
+}
+
+@media(min-width: 768px) {
+    body {
+        padding: 6rem;
+    }
+    .job-listing {
+        padding: 1rem;
+    }
+
+    .logo {
+        width: 66px;
+        height: auto;
     }
 }
