@@ -22,7 +22,7 @@ function isFeatured(job) {
 function showJobsList(jobs) {
     console.table(jobs);
 
-    const jobsList = document.querySelector('#jobs-list');
+    let jobsList = document.querySelector('#jobs-list');
     // jobsList.setAttribute('id', 'jobs-list');
 
     jobs.forEach(job => {
@@ -31,6 +31,8 @@ function showJobsList(jobs) {
         jobListing.classList.add('card-bg-transparent');
         let pNew = document.querySelector('.p-new');
         let pFeatured = document.querySelector('.featured');
+
+        isPropertyValueTrue(job);
 
             jobListing.innerHTML = `
         <div class="col">
@@ -41,7 +43,7 @@ function showJobsList(jobs) {
         <div class="col">
             <div class="row">
                 <div class="company-name"><p>${job.company}</p></div>
-                <div class="tag-round new"><p class="p-new">${togglePNew(job)}
+                <div class="tag-round new"><p class="p-new">New!
             </p>
             </div>
                 <div class="tag-round featured"><p class="p-featured">New!${job.featured ? "Featured" : ""}</p></div>
@@ -83,17 +85,37 @@ function showJobsList(jobs) {
             </div>
         </div>
         `;
-        
+        console.log('after innerHTML pNew: ', pNew);
         jobsList.appendChild(jobListing);
     });
 
 
-    function togglePNew(job, pNew) {
-        console.log('job.new: ', job.new);
-        console.log('pNew', pNew);
-        job.new === true ? pNew.style.display = "block" : pNew.style.display = "none"; 
+    // function togglePNew(job, pNew) {
+        
+    //     console.log('job.new: ', job.new);
+    //     console.log('pNew: ', pNew);
+    //     if (job.new === true) {
+    //         pNew.style.display = "block";
+    //     } else {
+    //         pNew.style.display = "none";
+    //     } 
     
-        console.log('job.new.value: ', job.new.value);
+    //     console.log('job.new.value: ', job.new.value);
+    // }
+
+    function isPropertyValueTrue(job) {
+        let pNew = document.querySelector('.p-new');
+        let pFeatured = document.querySelector('.p-featured');
+
+        console.log('pNew: ', pNew);
+        console.log('pFeatured: ', pFeatured);
+
+        let jobNew = job.new.value;
+        let jobFeatured = job.featured.value;
+        console.log('jobNew: ', jobNew);
+        console.log('jobFeatured: ', jobFeatured);
+
+
     }
 
 }
