@@ -8,18 +8,10 @@ function getJobsList() {
     fetch('https://fem-static-job-listings-six.vercel.app/data.json')
     .then(response => response.json())
     .then(data => {
+        console.table(data);
         showJobsList(data);
     });
 
-}
-
-function hidePNew(pNew) {
-    pNew.style.display = 'none';
-}
-
-function isNew(job, pNew) {
-    pNew = document.querySelector('.p-new');
-    return (job.new ? "New!" : hidePNew(pNew));
 }
 
 function isFeatured(job) {
@@ -30,26 +22,31 @@ function isFeatured(job) {
 function showJobsList(jobs) {
     console.table(jobs);
 
-    const jobsList = document.querySelector('#jobs-list');
+    let jobsList = document.querySelector('#jobs-list');
     // jobsList.setAttribute('id', 'jobs-list');
 
     jobs.forEach(job => {
         const jobListing = document.createElement('article');
         jobListing.classList.add('job-listing');
         jobListing.classList.add('card-bg-transparent');
-        let pNew = document.querySelector('.new');
+        let pNew = document.querySelector('.p-new');
         let pFeatured = document.querySelector('.featured');
 
+        isPropertyValueTrue(job);
+
             jobListing.innerHTML = `
-        <div class="row">
-            <img src="${job.logo}" alt="${job.company} logo" class="logo">
+        <div class="col">
+            <div class="row">
+                <img src="${job.logo}" alt="${job.company} logo" class="logo">
+            </div>
         </div>
         <div class="col">
             <div class="row">
                 <div class="company-name"><p>${job.company}</p></div>
-                <div class="tag-round new"><p class="p-new">${isNew(job)}
-            </p></div>
-                <div class="tag-round featured"><p class="p-featured">${job.featured ? "Featured" : ""}</p></div>
+                <div class="tag-round new"><p class="p-new">New!
+            </p>
+            </div>
+                <div class="tag-round featured"><p class="p-featured">New!${job.featured ? "Featured" : ""}</p></div>
             </div>
             <div class="row">
                 <h3 class="job-title">Senior Frontend Developer</h3>
@@ -88,8 +85,37 @@ function showJobsList(jobs) {
             </div>
         </div>
         `;
-        
+        console.log('after innerHTML pNew: ', pNew);
         jobsList.appendChild(jobListing);
     });
+
+
+    // function togglePNew(job, pNew) {
+        
+    //     console.log('job.new: ', job.new);
+    //     console.log('pNew: ', pNew);
+    //     if (job.new === true) {
+    //         pNew.style.display = "block";
+    //     } else {
+    //         pNew.style.display = "none";
+    //     } 
+    
+    //     console.log('job.new.value: ', job.new.value);
+    // }
+
+    function isPropertyValueTrue(job) {
+        let pNew = document.querySelector('.p-new');
+        let pFeatured = document.querySelector('.p-featured');
+
+        console.log('pNew: ', pNew);
+        console.log('pFeatured: ', pFeatured);
+
+        let jobNew = job.new.value;
+        let jobFeatured = job.featured.value;
+        console.log('jobNew: ', jobNew);
+        console.log('jobFeatured: ', jobFeatured);
+
+
+    }
 
 }
