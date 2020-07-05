@@ -29,63 +29,42 @@ function showJobsList(jobs) {
         const jobListing = document.createElement('article');
         jobListing.classList.add('job-listing');
         jobListing.classList.add('card-bg-transparent');
-        let pNew = document.querySelector('.p-new');
-        let pFeatured = document.querySelector('.featured');
+        const newBadge = '<p id="new" class="company-item">New!</p>';
+        const featuredBadge = '<p id="featured" class="company-item">Featured</p>';
 
         isPropertyValueTrue(job);
 
             jobListing.innerHTML = `
         <div class="col">
-            <div class="row">
-                <img src="${job.logo}" alt="${job.company} logo" class="logo">
+            <img src="${job.logo}" alt="${job.company} logo" class="logo">
+        </div>
+        <div class="col">
+            <div class="top-row row">
+                <p id="company-name" class="company-item">${job.company}</p>
+                ${job.new ? newBadge : ''}
+                ${job.featured ? featuredBadge : ''}
+            </div>
+            <div class="middle-row row">
+                <h2 class="job-title">Senior Frontend Developer</h2>
+            </div>
+            <div class="bottom-row row">
+                <p class="job-info">${job.postedAt}</p>
+                <p class="dot"></p>
+                <p class="job-info">${job.contract}</p>
+                <p class="dot"></p>
+                <p class="job-info">${job.location}</p>
             </div>
         </div>
         <div class="col">
-            <div class="row">
-                <div class="company-name"><p>${job.company}</p></div>
-                <div class="tag-round new"><p class="p-new">New!
-            </p>
-            </div>
-                <div class="tag-round featured"><p class="p-featured">New!${job.featured ? "Featured" : ""}</p></div>
-            </div>
-            <div class="row">
-                <h3 class="job-title">Senior Frontend Developer</h3>
-            </div>
-            <div class="row">
-                <ul id="job-description-list">
-                    <li class="tag-description">
-                    ${job.postedAt}
-                    </li>
-                    <li class="tag-description">
-                    ${job.contract}
-                    </li>
-                    <li class="tag-description">
-                    ${job.location}
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="col">
-            <div class="row">
-                <p class="tag-skill">
-                ${job.level}
-                </p>
-                <p class="tag-skill">
-                ${job.position}
-                </p>
-                <p class="tag-skill">
-                    HTML
-                </p>
-                <p class="tag-skill">
-                    CSS
-                </p>
-                <p class="tag-skill">
-                    JavaScript
-                </p>
+            <div class="job-skills-wrap">
+                <p class="skill">${job.level}</p>
+                <p class="skill">${job.position}</p>
+                <p class="skill">HTML</p>
+                <p class="skill">CSS</p>
+                <p class="skill">JavaScript</p>
             </div>
         </div>
         `;
-        console.log('after innerHTML pNew: ', pNew);
         jobsList.appendChild(jobListing);
     });
 
@@ -112,8 +91,23 @@ function showJobsList(jobs) {
 
         let jobNew = job.new.value;
         let jobFeatured = job.featured.value;
-        console.log('jobNew: ', jobNew);
+       
         console.log('jobFeatured: ', jobFeatured);
+
+        // check if the value of job.new is true
+        console.log('job.new: ', job.new);
+
+        // if it is true, then showNew();
+        function showNew() {
+            if (job.new === true) {
+                pNew.style.display= 'block';
+            } else {
+                pNew.style.display = 'none';
+            }
+        }
+        // else hideNew();
+
+    
 
 
     }
