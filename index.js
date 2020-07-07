@@ -73,13 +73,17 @@ function showJobsList(jobs) {
         jobsList.appendChild(jobListing);
 
         job.languages.forEach(language => {
+            let jobLanguagesArray = [];
             let programmingLanguages = document.querySelector('.programming-languages');
             let programmingLanguage = document.createElement('p');
             programmingLanguage.classList.add('skill');
             programmingLanguage.textContent = language;
+
+            jobLanguagesArray.push(language);
+            console.log('jobLanguagesArray: ', jobLanguagesArray);
             
             programmingLanguages.appendChild(programmingLanguage);
-            console.log('getProgrammingLanguages, job: ', job.languages);
+            // console.log('getProgrammingLanguages, job: ', job.languages);
         });
 
         // getProgrammingLanguages.appendChild(job);
