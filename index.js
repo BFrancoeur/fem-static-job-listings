@@ -64,31 +64,42 @@ function showJobsList(jobs) {
                 </div>
             </div>
             <div class="col">
-                <div class="job-skills-wrap">
+                <div id="job-skills-wrap">
                     <p class="skill">${job.level}</p>
                     <p class="skill">${job.position}</p>
-                    <div class="programming-languages"></div>
+                    <div id="programming-languages"></div>
                 </div>
             </div>
         `;
         jobsList.appendChild(jobListing);
 
-            
             job.languages.forEach(language => {
-                console.log('programmingLanguage', language);
-                let id = 'co' + job.id;
-                let programmingLanguages = document.querySelector('#' + id);
                 let programmingLanguage = document.createElement('p');
-
                 programmingLanguage.classList.add('skill');
+
                 let languageName = language;
                 programmingLanguage.textContent = languageName;
-                programmingLanguages.appendChild(programmingLanguage);
 
-                console.log('programmingLanguage', programmingLanguage.textContent);
-                console.log('Programming Languages: ', programmingLanguages);
+                let programmingLanguages = document.querySelector('#programming-languages');
+                programmingLanguages.appendChild(programmingLanguage);
             
             });
+            
+            // job.languages.forEach(language => {
+            //     console.log('programmingLanguage', language);
+            //     let id = 'co' + job.id;
+            //     let programmingLanguages = document.querySelector('#' + id);
+            //     let programmingLanguage = document.createElement('p');
+
+            //     programmingLanguage.classList.add('skill');
+            //     let languageName = language;
+            //     programmingLanguage.textContent = languageName;
+            //     programmingLanguages.appendChild(programmingLanguage);
+
+            //     console.log('programmingLanguage', programmingLanguage.textContent);
+            //     console.log('Programming Languages: ', programmingLanguages);
+            
+            // });
             // console.log('getProgrammingLanguages, job: ', job.languages);
 
         // getProgrammingLanguages.appendChild(job);
