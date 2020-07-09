@@ -16,18 +16,40 @@ function isFeatured(job) {
     return (job.featured ? "Featured" : "");
 }
 
-// function getProgrammingLanguages(job) {
-//     job.languages.forEach(language => {
-//         let programmingLanguages = document.querySelector('.programming-languages');
-//         let programmingLanguage = document.createElement('p');
-//         programmingLanguage.classList.add('skill');
-//         programmingLanguage.textContent = language;
-        
-//         // programmingLanguages.appendChild(programmingLanguage);
-//         console.log('getProgrammingLanguages, jobs: ', job.languages);
-//         console.log('getProgrammingLanguages ', programmingLanguage);
-//     });
-// }
+function showProgrammingLanguages(jobs) {
+
+    
+
+// access each job listing 
+    jobs.forEach(job => {
+    
+    // get id of job
+    let jobId = job.id;
+
+    // while 
+    console.log('job ', job);
+
+    let jobSkillsWrap = document.querySelector('#job-skills-wrap');
+
+        job.languages.forEach(language => {
+            
+            let programmingLanguages = [];
+            programmingLanguages.push(language);
+
+            console.log('programming language ', programmingLanguages);
+            // wrap each job language in a <p> tag
+
+        });
+        programmingLanguages.forEach(language => {
+            let programmingLanguageElem = document.createElement('p');
+            programmingLanguageElem.classList.add('skill');
+            
+            jobSkillsWrap.appendChild(programmingLanguageElem);
+        });
+    });
+        // append each job to the #job-skills-wrap div
+        // jobSkillsWrap.appendChild(programmingLanguages);
+}
 
 function showJobsList(jobs) {
 
@@ -35,12 +57,14 @@ function showJobsList(jobs) {
     // jobsList.setAttribute('id', 'jobs-list');
 
     jobs.forEach(job => {
+        
         const jobListing = document.createElement('article');
         jobListing.setAttribute('id', `co${job.id}`);
         jobListing.classList.add('job-listing');
         jobListing.classList.add('card-bg-transparent');
         const newBadge = '<p id="new" class="company-item">New!</p>';
         const featuredBadge = '<p id="featured" class="company-item">Featured</p>';
+
 
         jobListing.innerHTML = `
             <div class="col">
@@ -64,34 +88,15 @@ function showJobsList(jobs) {
                 </div>
             </div>
             <div class="col">
-                <div class="job-skills-wrap">
+                <div id="job-skills-wrap">
                     <p class="skill">${job.level}</p>
                     <p class="skill">${job.position}</p>
-                    <div class="programming-languages"></div>
                 </div>
             </div>
         `;
+        
         jobsList.appendChild(jobListing);
-
-            
-            job.languages.forEach(language => {
-                console.log('programmingLanguage', language);
-                let id = 'co' + job.id;
-                let programmingLanguages = document.querySelector('#' + id);
-                let programmingLanguage = document.createElement('p');
-
-                programmingLanguage.classList.add('skill');
-                let languageName = language;
-                programmingLanguage.textContent = languageName;
-                programmingLanguages.appendChild(programmingLanguage);
-
-                console.log('programmingLanguage', programmingLanguage.textContent);
-                console.log('Programming Languages: ', programmingLanguages);
-            
-            });
-            // console.log('getProgrammingLanguages, job: ', job.languages);
-
-        // getProgrammingLanguages.appendChild(job);
     });
-
+    showProgrammingLanguages(jobs);
+    
 }
