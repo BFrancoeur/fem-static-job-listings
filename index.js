@@ -16,18 +16,40 @@ function isFeatured(job) {
     return (job.featured ? "Featured" : "");
 }
 
-// function getProgrammingLanguages(job) {
-//     job.languages.forEach(language => {
-//         let programmingLanguages = document.querySelector('.programming-languages');
-//         let programmingLanguage = document.createElement('p');
-//         programmingLanguage.classList.add('skill');
-//         programmingLanguage.textContent = language;
-        
-//         // programmingLanguages.appendChild(programmingLanguage);
-//         console.log('getProgrammingLanguages, jobs: ', job.languages);
-//         console.log('getProgrammingLanguages ', programmingLanguage);
-//     });
-// }
+let showProgrammingLanguages = function (jobs) {
+
+// access each job listing 
+    jobs.forEach(job => {
+    
+    // get id of job
+    let jobId = job.id;
+
+    let programmingLanguages = document.createElement('div');
+    programmingLanguages.setAttribute('id', `programming-languages${job.id}`);
+
+    // while 
+
+    let jobSkillsWrap = document.querySelector('#job-skills-wrap');
+
+        job.languages.forEach(language => {
+
+            console.log('programming languages ', programmingLanguages);
+            // wrap each job language in a <p> tag
+            let programmingLanguage = document.createElement('p');
+            programmingLanguage.classList.add('skill');
+
+            programmingLanguage.textContent = language;
+
+            programmingLanguages.appendChild(programmingLanguage);
+            
+            jobSkillsWrap.appendChild(programmingLanguages);
+
+        });
+
+    });
+        // append each job to the #job-skills-wrap div
+        // jobSkillsWrap.appendChild(programmingLanguages);
+}
 
 function showJobsList(jobs) {
 
@@ -35,6 +57,7 @@ function showJobsList(jobs) {
     // jobsList.setAttribute('id', 'jobs-list');
 
     jobs.forEach(job => {
+        
         const jobListing = document.createElement('article');
         jobListing.setAttribute('id', `co${job.id}`);
         jobListing.classList.add('job-listing');
@@ -42,8 +65,6 @@ function showJobsList(jobs) {
 
         const newBadge = '<p id="new" class="company-item">New!</p>';
         const featuredBadge = '<p id="featured" class="company-item">Featured</p>';
-
-        let jobSkillsWrap = '';
 
 
         jobListing.innerHTML = `
@@ -71,39 +92,20 @@ function showJobsList(jobs) {
                 <div id="job-skills-wrap">
                     <p class="skill">${job.level}</p>
                     <p class="skill">${job.position}</p>
-                    <div id="programming-languages"></div>
+                    <p class="skill">${job.languages[0]}</p>
+                    <p class="skill">${job.languages[1]}</p>
+                    <p class="skill">${job.languages[2]}</p>
                 </div>
             </div>
+            <div class="col"> 
+              ${tags.reduce((allTags, tag) => {
+                // console.log("tag ", tag);
+                return allTags + `<p class="tag">${tag}</p>`;
+              })}
+            </div>
         `;
-        jobsList.appendChild(jobListing);
-
-            // job.languages.forEach(language => {
-            //     let programmingLanguage = document.createElement('p');
-            //     programmingLanguage.classList.add('skill');
-
-            //     let languageName = language;
-            //     programmingLanguage.textContent = languageName;
-
-            //     let programmingLanguages = document.querySelector('#programming-languages');
-            //     programmingLanguages.appendChild(programmingLanguage);
-            
-            // });
-
-            jobs.forEach(job => {
-                
-                let id = 'co' + job.id;
-                let companyId = document.querySelector('#' + id);
-                
-                job.languages.forEach(language => {
-                    jobSkillsWrap = document.querySelector('job-skills-wrap');
-                    let programmingLanguage = document.createElement('p');
-                    programmingLanguage.classList.add('skill');
         
-                    jobSkillsWrap.appendChild('programmingLanguage');
-                });
-            
-            });
-            
+        jobsList.appendChild(jobListing);
     });
-
+    
 }
