@@ -16,9 +16,7 @@ function isFeatured(job) {
     return (job.featured ? "Featured" : "");
 }
 
-function showProgrammingLanguages(jobs) {
-
-    
+let showProgrammingLanguages = function (jobs) {
 
 // access each job listing 
     jobs.forEach(job => {
@@ -26,26 +24,28 @@ function showProgrammingLanguages(jobs) {
     // get id of job
     let jobId = job.id;
 
+    let programmingLanguages = document.createElement('div');
+    programmingLanguages.setAttribute('id', `programming-languages${job.id}`);
+
     // while 
-    console.log('job ', job);
 
     let jobSkillsWrap = document.querySelector('#job-skills-wrap');
 
         job.languages.forEach(language => {
-            
-            let programmingLanguages = [];
-            programmingLanguages.push(language);
 
-            console.log('programming language ', programmingLanguages);
+            console.log('programming languages ', programmingLanguages);
             // wrap each job language in a <p> tag
+            let programmingLanguage = document.createElement('p');
+            programmingLanguage.classList.add('skill');
+
+            programmingLanguage.textContent = language;
+
+            programmingLanguages.appendChild(programmingLanguage);
+            
+            jobSkillsWrap.appendChild(programmingLanguages);
 
         });
-        programmingLanguages.forEach(language => {
-            let programmingLanguageElem = document.createElement('p');
-            programmingLanguageElem.classList.add('skill');
-            
-            jobSkillsWrap.appendChild(programmingLanguageElem);
-        });
+
     });
         // append each job to the #job-skills-wrap div
         // jobSkillsWrap.appendChild(programmingLanguages);
@@ -92,12 +92,20 @@ function showJobsList(jobs) {
                 <div id="job-skills-wrap">
                     <p class="skill">${job.level}</p>
                     <p class="skill">${job.position}</p>
+                    <p class="skill">${job.languages[0]}</p>
+                    <p class="skill">${job.languages[1]}</p>
+                    <p class="skill">${job.languages[2]}</p>
                 </div>
+            </div>
+            <div class="col"> 
+              ${tags.reduce((allTags, tag) => {
+                // console.log("tag ", tag);
+                return allTags + `<p class="tag">${tag}</p>`;
+              })}
             </div>
         `;
         
         jobsList.appendChild(jobListing);
     });
-    showProgrammingLanguages(jobs);
     
 }
