@@ -18,7 +18,46 @@
   </style>
 </head>
 <body>
-    <div id="jobs-list"></div>
+    <header class="app-header">
+      <img src="./images/bg-header-desktop.svg" alt="header background" class="bg-header">
+      <div class="wrapper">
+        <div id="job-categories">
+          <select name="roles" id="roles" class="categories">
+            <option value="role" class="option" default>Role</option>
+            <option value="role--frontend" class="option">Frontend</option>
+            <option value="role--backend" class="option">Backend</option>
+            <option value="role--fullstack" class="option">Fullstack</option>
+          </select> 
+    
+          <select name="levels" id="levels" class="categories">
+            <option value="level" class="option" default>Level</option>
+            <option value="level--junior" class="option">Junior</option>
+            <option value="level--midweight" class="option">Midweight</option>
+            <option value="level--senior" class="option">Senior</option>
+          </select> 
+          
+          <select name="languages" id="languages" class="categories">
+            <option value="language" class="option" default>Language</option>
+            <option value="language--python" class="option">Python</option>
+            <option value="language--ruby" class="option">Ruby</option>
+            <option value="language--javascript" class="option">JavaScript</option>
+            <option value="language--html" class="option">HTML</option>
+            <option value="language--css" class="option">CSS</option>
+          </select> 
+    
+          <select name="tools" id="tools" class="categories">
+            <option value="tool" class="option" default>Tool</option>
+            <option value="tool--react" class="option">React</option>
+            <option value="tool--sass" class="option">Sass</option>
+            <option value="tool--vue" class="option">Vue</option>
+            <option value="tool--django" class="option">Django</option>
+            <option value="tool--ruby-on-rails" class="option">Ruby on Rails</option>
+          </select> 
+        </div> 
+      </div>
+    </header>
+    <div id="jobs-list">
+    </div>
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io/" target="_blank">Frontend Mentor</a>. 

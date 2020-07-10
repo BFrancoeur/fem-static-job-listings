@@ -42,7 +42,6 @@ function showJobsList(jobs) {
     jobs.forEach(job => {
 
         const tags = [job.role, job.level, ...job.languages, ...job.tools];
-        let firstIteration = '';
         const jobListing = document.createElement('article');
         jobListing.setAttribute('id', `co${job.id}`);
         jobListing.classList.add('job-listing');
