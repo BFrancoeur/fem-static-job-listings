@@ -16,39 +16,22 @@ function isFeatured(job) {
     return (job.featured ? "Featured" : "");
 }
 
-let showProgrammingLanguages = function (jobs) {
+function filterCatgories() {
+    /**
+     * The categories are:
+        - Role: Frontend, Backend, Fullstack
+        - Level: Junior, Midweight, Senior
+        - Languages: Python, Ruby, JavaScript, HTML, CSS
+        - Tools: React, Sass, Vue, Django, RoR (Ruby on Rails)
+     */
 
-// access each job listing 
-    jobs.forEach(job => {
-    
-    // get id of job
-    let jobId = job.id;
+     // create an array for each category
+     let role = ['Frontend', 'Backend', 'Fullstack'];
+     let level = ['Junior', 'Midweight', 'Senior'];
+     let languages = ['Python', 'Ruby', 'JavaScript', 'HTML', 'CSS'];
+     let tools = ['React', 'Sass', 'Vue', 'Django', 'Ruby on Rails' ];
 
-    let programmingLanguages = document.createElement('div');
-    programmingLanguages.setAttribute('id', `programming-languages${job.id}`);
-
-    // while 
-
-    let jobSkillsWrap = document.querySelector('#job-skills-wrap');
-
-        job.languages.forEach(language => {
-
-            console.log('programming languages ', programmingLanguages);
-            // wrap each job language in a <p> tag
-            let programmingLanguage = document.createElement('p');
-            programmingLanguage.classList.add('skill');
-
-            programmingLanguage.textContent = language;
-
-            programmingLanguages.appendChild(programmingLanguage);
-            
-            jobSkillsWrap.appendChild(programmingLanguages);
-
-        });
-
-    });
-        // append each job to the #job-skills-wrap div
-        // jobSkillsWrap.appendChild(programmingLanguages);
+     
 }
 
 function showJobsList(jobs) {
@@ -57,7 +40,9 @@ function showJobsList(jobs) {
     // jobsList.setAttribute('id', 'jobs-list');
 
     jobs.forEach(job => {
-        
+
+        const tags = [job.role, job.level, ...job.languages, ...job.tools];
+        let firstIteration = '';
         const jobListing = document.createElement('article');
         jobListing.setAttribute('id', `co${job.id}`);
         jobListing.classList.add('job-listing');
@@ -88,20 +73,10 @@ function showJobsList(jobs) {
                     <p class="job-info">${job.location}</p>
                 </div>
             </div>
-            <div class="col">
-                <div id="job-skills-wrap">
-                    <p class="skill">${job.level}</p>
-                    <p class="skill">${job.position}</p>
-                    <p class="skill">${job.languages[0]}</p>
-                    <p class="skill">${job.languages[1]}</p>
-                    <p class="skill">${job.languages[2]}</p>
-                </div>
-            </div>
             <div class="col"> 
               ${tags.reduce((allTags, tag) => {
-                // console.log("tag ", tag);
                 return allTags + `<p class="tag">${tag}</p>`;
-              })}
+              }, '')}
             </div>
         `;
         
