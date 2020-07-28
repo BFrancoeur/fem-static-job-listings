@@ -7,6 +7,7 @@ function getJobsList() {
     .then(response => response.json())
     .then(data => {
         showJobsList(data);
+        filterFrontendJobs(data);
     });
 
 }
@@ -16,22 +17,10 @@ function isFeatured(job) {
     return (job.featured ? "Featured" : "");
 }
 
-function filterCatgories() {
-    /**
-     * The categories are:
-        - Role: Frontend, Backend, Fullstack
-        - Level: Junior, Midweight, Senior
-        - Languages: Python, Ruby, JavaScript, HTML, CSS
-        - Tools: React, Sass, Vue, Django, RoR (Ruby on Rails)
-     */
+const roles = document.querySelector('#roles');
 
-     // create an array for each category
-     let role = ['Frontend', 'Backend', 'Fullstack'];
-     let level = ['Junior', 'Midweight', 'Senior'];
-     let languages = ['Python', 'Ruby', 'JavaScript', 'HTML', 'CSS'];
-     let tools = ['React', 'Sass', 'Vue', 'Django', 'Ruby on Rails' ];
-
-     
+function filterFrontendJobs(jobs) {
+    const frontendJobs = jobs.filter(job => job.role === 'Frontend' ? showJobsList(jobs) : '<p>Sorry, no jobs match that role.</p>');
 }
 
 function showJobsList(jobs) {
