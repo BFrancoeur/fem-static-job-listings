@@ -7,7 +7,7 @@ function getJobsList() {
     .then(response => response.json())
     .then(data => {
         showJobsList(data);
-        filterFrontendJobs(data);
+        // filterJobRoles(data);
     });
 
 }
@@ -17,16 +17,31 @@ function isFeatured(job) {
     return (job.featured ? "Featured" : "");
 }
 
+// create variables for each filter element
 const roles = document.querySelector('#roles');
+const levels = document.querySelector('#levels');
+const tools = document.querySelector('#tools');
+const languages = document.querySelector('#languages');
 
-function filterFrontendJobs(jobs) {
-    const frontendJobs = jobs.filter(job => job.role === 'Frontend' ? showJobsList(jobs) : '<p>Sorry, no jobs match that role.</p>');
-}
+// filter by tag type
+jobs.filter(// filter based on selected option);
+
+// display filtered array of jobs on frontend
+// showJobsList(filteredJobs);
+
+
 
 function showJobsList(jobs) {
 
-    let jobsList = document.querySelector('#jobs-list');
-    // jobsList.setAttribute('id', 'jobs-list');
+    const jobsList = document.querySelector('#jobs-list');
+    const roles = document.querySelector('#roles');
+
+    let selectedRole = jobs.filter(role => roles.options[roles.selectedIndex].textContent); // this doesn't work! 
+
+    roles.addEventListener('change', (event) => {
+        console.log(role);
+        return jobs.filter(role);
+    });
 
     jobs.forEach(job => {
 
@@ -72,3 +87,4 @@ function showJobsList(jobs) {
     });
     
 }
+
